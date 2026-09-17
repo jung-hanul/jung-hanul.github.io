@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hanul Jung</title>
+<meta name="description" content="Hanul Jung — Senior Researcher at ETRI. Data-driven motion control, system identification, and robust control for multi-axis mechatronic and robotic systems.">
+<meta name="author" content="Hanul Jung">
+
+<!-- [수정] USERNAME 을 본인 GitHub 계정명으로 -->
+<meta property="og:title" content="Hanul Jung">
+<meta property="og:description" content="Senior Researcher, Mobility AI Convergence Research Section, ETRI">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://USERNAME.github.io/">
+<meta property="og:image" content="https://USERNAME.github.io/assets/profile.jpg">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. 디자인 토큰 — 여기만 바꾸면 사이트 전체가 따라옵니다
+   ============================================================ */
+:root{
+  --accent:#1a5fb4;
+  --accent-soft:#e8f0fb;
+  --bg:#ffffff;
+  --surface:#f7f8fa;
+  --text:#1f2328;
+  --text-muted:#5b6470;
+  --border:#e4e7eb;
+  --radius:10px;
+  --maxw:900px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --accent:#7aa8e8; --accent-soft:#1b2a3f;
+    --bg:#15181c; --surface:#1c2026; --text:#e6e9ee;
+    --text-muted:#9aa4b0; --border:#2b3039;
+  }
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:70px;}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent); text-decoration:none;}
+a:hover{text-decoration:underline;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+
+/* ---------- 상단 내비 ---------- */
+nav{position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px;}
+nav .brand{font-weight:700; letter-spacing:-.01em; color:var(--text);}
+nav ul{display:flex; gap:20px; list-style:none; margin:0; padding:0; overflow-x:auto;}
+nav ul a{color:var(--text-muted); font-size:14px; font-weight:500; white-space:nowrap;}
+nav ul a:hover{color:var(--accent); text-decoration:none;}
+
+/* ---------- 프로필 ---------- */
+header.profile{padding:54px 0 40px; border-bottom:1px solid var(--border);}
+.profile-grid{display:flex; gap:38px; align-items:flex-start;}
+.photo-slot{flex:0 0 172px; width:172px; height:172px; position:relative;}
+.photo{width:100%; height:100%; border-radius:50%; object-fit:cover; border:1px solid var(--border); display:block;}
+.photo-fallback{
+  width:100%; height:100%; border-radius:50%;
+  background:var(--accent-soft); color:var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Noto Serif',serif; font-size:3.4rem; letter-spacing:-.02em;
+  border:1px solid var(--border);
+}
+.profile h1{font-family:'Noto Serif',serif; font-size:2.05rem; line-height:1.2;
+  margin:0 0 5px; letter-spacing:-.02em;}
+.profile h1 .kr{font-family:inherit; font-size:1rem; color:var(--text-muted); font-weight:400; margin-left:6px;}
+.role{color:var(--text-muted); font-size:.95rem; margin:0 0 18px; line-height:1.5;}
+.bio{margin:0 0 16px;}
+.bio em{color:var(--text); font-style:normal; font-weight:600;}
+.interests{font-size:.92rem; color:var(--text-muted); margin:0 0 18px;}
+.interests strong{color:var(--text);}
+.links{display:flex; flex-wrap:wrap; gap:8px;}
+.links a{display:inline-block; padding:5px 14px; font-size:13px; font-weight:500;
+  border:1px solid var(--border); border-radius:99px; color:var(--text-muted);
+  background:var(--surface); transition:border-color .15s, color .15s;}
+.links a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+/* ---------- 섹션 공통 ---------- */
+section{padding:42px 0 6px;}
+h2{font-size:1rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  margin:0 0 22px; padding-bottom:9px; border-bottom:2px solid var(--accent); display:inline-block;}
+h3{font-size:.86rem; font-weight:700; color:var(--text-muted); margin:28px 0 12px;
+  letter-spacing:.08em; text-transform:uppercase;}
+h3:first-of-type{margin-top:0;}
+.note{font-size:.85rem; color:var(--text-muted); margin:-10px 0 18px;}
+
+/* ---------- 이력 리스트 ---------- */
+.cv-list{list-style:none; margin:0; padding:0;}
+.cv-list li{display:grid; grid-template-columns:132px 1fr; gap:20px;
+  padding:13px 0; border-bottom:1px dashed var(--border);}
+.cv-list li:last-child{border-bottom:none;}
+.cv-date{color:var(--text-muted); font-size:.85rem; font-variant-numeric:tabular-nums; padding-top:3px;}
+.cv-body strong{font-weight:600;}
+.cv-body span{display:block; color:var(--text-muted); font-size:.9rem;}
+.cv-body span.thesis{font-style:italic;}
+
+/* ---------- 논문 ---------- */
+.pub{display:grid; grid-template-columns:46px 1fr; gap:6px;
+  padding:13px 0; border-bottom:1px solid var(--border);}
+.pub:last-child{border-bottom:none;}
+.pub-num{color:var(--text-muted); font-size:.82rem; font-variant-numeric:tabular-nums; padding-top:3px;}
+.pub-title{font-weight:600; margin:0 0 4px; line-height:1.45;}
+.pub-authors{font-size:.9rem; color:var(--text-muted); margin:0 0 3px;}
+.pub-authors b{color:var(--text); font-weight:600;}
+.pub-venue{font-size:.9rem; color:var(--text-muted); margin:0 0 7px;}
+.pub-venue i{font-style:italic;}
+.badge{display:inline-block; margin-left:6px; padding:1px 8px; border-radius:99px;
+  font-size:11px; font-weight:600; background:var(--accent-soft); color:var(--accent);
+  vertical-align:middle; white-space:nowrap;}
+.pub-links a{font-size:13px; font-weight:500; margin-right:11px;}
+.pub-links a::before{content:"[";} .pub-links a::after{content:"]";}
+
+/* 썸네일을 넣고 싶은 논문은 <article class="pub pub-img"> 로 바꾸고
+   <img class="pub-thumb" src="assets/xxx.png" alt=""> 를 첫 자식으로 넣으세요 */
+.pub-img{grid-template-columns:190px 1fr; gap:22px; padding:20px 0;}
+.pub-img .pub-num{display:none;}
+.pub-thumb{width:100%; aspect-ratio:5/3; object-fit:cover; background:var(--surface);
+  border:1px solid var(--border); border-radius:var(--radius);}
+
+/* ---------- 불릿 ---------- */
+ul.plain{list-style:none; margin:0; padding:0;}
+ul.plain li{padding:8px 0 8px 20px; position:relative;}
+ul.plain li::before{content:""; position:absolute; left:2px; top:17px;
+  width:5px; height:5px; border-radius:50%; background:var(--accent);}
+ul.plain .yr{color:var(--text-muted); font-variant-numeric:tabular-nums;
+  display:inline-block; min-width:64px;}
+ul.plain .sub{display:block; color:var(--text-muted); font-size:.89rem;}
+
+/* ---------- 과제 카드 ---------- */
+.proj{padding:14px 0; border-bottom:1px dashed var(--border);}
+.proj:last-child{border-bottom:none;}
+.proj strong{font-weight:600;}
+.proj .meta{display:block; color:var(--text-muted); font-size:.88rem;}
+
+footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
+  font-size:13px; color:var(--text-muted); text-align:center;}
+
+@media (max-width:680px){
+  .profile-grid{flex-direction:column; align-items:center; text-align:center; gap:22px;}
+  .photo-slot{flex-basis:140px; width:140px; height:140px;}
+  .links{justify-content:center;}
+  .cv-list li{grid-template-columns:1fr; gap:2px;}
+  .pub{grid-template-columns:1fr;}
+  .pub-num{display:none;}
+  .pub-img{grid-template-columns:1fr; gap:12px;}
+  .pub-thumb{max-width:320px;}
+  nav .brand{display:none;}
+  nav ul{width:100%; justify-content:space-between; gap:12px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Hanul Jung</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#patents">Patents</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#activities">Activities</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     프로필 — 사진은 assets/profile.jpg (정사각형 400x400 이상)
+     파일이 없으면 자동으로 이니셜 원형이 표시됩니다
+     ============================================================ -->
+<header class="profile" id="top">
+  <div class="wrap profile-grid">
+    <div class="photo-slot">
+      <img class="photo" src="assets/profile.jpg" alt="Hanul Jung"
+           onerror="this.outerHTML='&lt;div class=\'photo-fallback\'&gt;HJ&lt;/div&gt;'">
+    </div>
+    <div>
+      <h1>Hanul Jung <span class="kr">정하늘</span></h1>
+      <p class="role">
+        Senior Researcher &nbsp;·&nbsp; Mobility AI Convergence Research Section<br>
+        Daegu-Gyeongbuk Research Division,
+        <a href="https://www.etri.re.kr/eng/main/main.etri" target="_blank" rel="noopener">ETRI</a>,
+        Daegu, Republic of Korea
+      </p>
+
+      <p class="bio">
+        My research addresses <em>data-driven motion control</em> and <em>system identification</em>
+        for high-performance mechatronic systems, with an emphasis on
+        <em>control-relevant identification</em> — building models that are accurate where the
+        closed loop actually needs them. This formulation has been extended to multi-axis stages
+        with asymmetric actuation and to plants subject to unmodeled, operating-condition-dependent
+        disturbances.
+      </p>
+      <p class="bio">
+        My broader motivation is that data-driven control occupies the interface between model-based
+        synthesis and machine learning, preserving the interpretability and stability guarantees of
+        the former while admitting the representational capacity of the latter. I am currently
+        extending this perspective to multi-axis field robotics, where lightly damped manipulators
+        and mobile manipulation platforms must attenuate structural vibration and sustain motion
+        performance under varying payloads and unstructured operating conditions.
+      </p>
+
+      <p class="interests">
+        <strong>Interests:</strong>
+        Data-driven control · System identification · Disturbance observer ·
+        MIMO precision motion control · Mobile manipulation · Industrial embedded systems
+      </p>
+
+      <div class="links">
+        <a href="mailto:hanul@etri.re.kr">✉ Email</a>
+        <a href="cv.pdf" target="_blank">CV</a>
+        <a href="https://orcid.org/0000-0002-8262-0013" target="_blank" rel="noopener">ORCID</a>
+        <!-- [수정] 아래 두 줄은 실제 주소로 바꾸거나 삭제하세요 -->
+        <a href="https://scholar.google.com/citations?user=XXXXXXXX" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/USERNAME" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============================================================
+     학력 / 경력 / 연구경험
+     ============================================================ -->
+<section id="about">
+  <h2>Education</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="cv-date">2019 – 2024</span>
+      <span class="cv-body">
+        <strong>Ph.D. in Robotics and Mechatronics Engineering</strong>
+        <span>DGIST (Daegu Gyeongbuk Institute of Science and Technology), Daegu, Korea</span>
+        <span class="thesis">Thesis: Data-Driven Motion Control Framework of Model-Based Approach for Multi-Axis Flexible Systems</span>
+        <span>Advisor: Prof. Sehoon Oh &nbsp;·&nbsp; Co-advisor: Dr. Chang-Wan Ha</span>
+      </span>
+    </li>
+    <li>
+      <span class="cv-date">2017 – 2019</span>
+      <span class="cv-body">
+        <strong>M.S. in Robotics Engineering</strong>
+        <span>DGIST, Daegu, Korea</span>
+        <span class="thesis">Thesis: Unknown Frequency Vibration Suppression Control of Linear Motor Stage Using Peak Filter</span>
+        <span>Advisor: Prof. Sehoon Oh &nbsp;·&nbsp; Co-advisor: Prof. Yongseob Lim</span>
+      </span>
+    </li>
+    <li>
+      <span class="cv-date">2010 – 2017</span>
+      <span class="cv-body">
+        <strong>B.S. in Mechanical Engineering / Control Engineering</strong>
+        <span>Handong Global University, Pohang, Korea</span>
+        <span>Department of Mechanical and Control Engineering (double emphasis, incl. Counseling Psychology)</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2 style="margin-top:44px;">Experience</h2>
+  <ul class="cv-list">
+    <li>
+      <span class="cv-date">2024 – Present</span>
+      <span class="cv-body">
+        <strong>Senior Researcher</strong>
+        <span>Mobility AI Convergence Research Section, Daegu-Gyeongbuk Research Division, ETRI</span>
+      </span>
+    </li>
+    <li>
+      <span class="cv-date">2022 – 2023</span>
+      <span class="cv-body">
+        <strong>Visiting Ph.D. Student</strong>
+        <span>Control Systems Technology Group, Eindhoven University of Technology (TU/e), The Netherlands</span>
+        <span>Robust-stability-based model order selection; kernel-based parametric identification; multivariable FRF analysis</span>
+      </span>
+    </li>
+    <li>
+      <span class="cv-date">2018</span>
+      <span class="cv-body">
+        <strong>Research Intern</strong>
+        <span>AI Robot Research Division, Korea Institute of Machinery &amp; Materials (KIMM)</span>
+        <span>Input shaping and motion profiling; magnetic levitation tray system</span>
+      </span>
+    </li>
+    <li>
+      <span class="cv-date">2017</span>
+      <span class="cv-body">
+        <strong>Research Intern</strong>
+        <span>Department of Robotics Engineering, DGIST</span>
+        <span>Series elastic actuator — mechanical design and control</span>
+      </span>
+    </li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     진행 중인 과제 — 필요 없으면 이 section 삭제
+     ============================================================ -->
+<section id="projects">
+  <h2>Current Research Projects</h2>
+  <div class="proj">
+    <strong>Modular Robotic Platform and Integrated Control for Crop Cultivation</strong>
+    <span class="meta">Regional Industry–Academia–Research Innovation Platform, 2025.07 – 2029.12 &nbsp;·&nbsp;
+      Role: control of harvesting manipulators and mobile platforms</span>
+  </div>
+  <div class="proj">
+    <strong>Intelligent Mobile Robot System for High-Voltage Circuit Breaker Insertion and Withdrawal</strong>
+    <span class="meta">Commissioned research, 2025.10 – 2026.09 &nbsp;·&nbsp;
+      Role: intelligent mobile robot system development</span>
+  </div>
+  <div class="proj">
+    <strong>Tactile-Sensor-Based Affordable Precision Gripper (Planning Study)</strong>
+    <span class="meta">ETRI Seed-Type Challenge Research Program, 2025.10 – 2026.06 &nbsp;·&nbsp;
+      Role: model- and learning-based control technology planning</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     논문 — 새 논문은 <article class="pub"> 블록을 복사해 맨 위에 추가
+     ============================================================ -->
+<section id="publications">
+  <h2>Publications</h2>
+  <p class="note">
+    <b>Bold</b> indicates the author of this page. &nbsp;† denotes equal contribution.
+    &nbsp;Full record on <a href="https://orcid.org/0000-0002-8262-0013" target="_blank" rel="noopener">ORCID</a>.
+  </p>
+
+  <h3>Journal Articles</h3>
+
+  <article class="pub">
+    <span class="pub-num">J8</span>
+    <div>
+      <p class="pub-title">Robust-Stability-Relevant System Identification for Disturbance Observer Design</p>
+      <p class="pub-authors"><b>H. Jung</b>, P. Tacx, T. Oomen, and S. Oh</p>
+      <p class="pub-venue"><i>Mechanical Systems and Signal Processing</i>
+        <span class="badge">Under Review</span></p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J7</span>
+    <div>
+      <p class="pub-title">Robust DOB Design for Asymmetric LPV Hybrid Gantry Systems Based on Mode Decomposition and Nominal Model Selection</p>
+      <p class="pub-authors"><b>H. Jung</b>, J. Yoon, T. Kong, and S. Oh</p>
+      <p class="pub-venue"><i>Mechatronics</i>, vol. 118, art. 103526, 2026</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1016/J.MECHATRONICS.2026.103526" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J6</span>
+    <div>
+      <p class="pub-title">Data-Driven Disturbance Compensation for Core-Type Linear Motors Using TISO-GPR Integrated with Disturbance Observers</p>
+      <p class="pub-authors"><b>H. Jung</b>, H. Yeo, H. Jang, and S. Oh</p>
+      <p class="pub-venue"><i>Control Engineering Practice</i>, vol. 173, 2026</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1016/J.CONENGPRAC.2026.106981" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J5</span>
+    <div>
+      <p class="pub-title">Design and Evaluation of a Compact Steering-Driving-Suspension Module with Wide-Angle Steering for Reconfigurable Mobility Platforms</p>
+      <p class="pub-authors">J. Choi and <b>H. Jung</b> (corresponding author)</p>
+      <p class="pub-venue"><i>ASME Journal of Mechanisms and Robotics</i>, vol. 18, no. 3, art. 034501, 2026</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1115/1.4070891" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J4</span>
+    <div>
+      <p class="pub-title">Data-Driven Dynamics Decomposition of Dual-Drive Gantry Stage and Robust Decoupling Control</p>
+      <p class="pub-authors"><b>H. Jung</b>, W. Kim, and S. Oh</p>
+      <p class="pub-venue"><i>IEEE/ASME Transactions on Mechatronics</i>, vol. 31, no. 2, 2026</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1109/TMECH.2025.3614046" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J3</span>
+    <div>
+      <p class="pub-title">Two-Degree-of-Freedom Control of a Micro-Robot Using a Dual-Rate State Observer</p>
+      <p class="pub-authors"><b>H. Jung</b>, S. Kwak, H. Choi, and S. Oh</p>
+      <p class="pub-venue"><i>IEEE Transactions on Control Systems Technology</i>, vol. 31, no. 3, pp. 1451–1459, 2022</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1109/TCST.2022.3220898" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J2</span>
+    <div>
+      <p class="pub-title">Data-Driven Optimization of Integrated Control Framework for Flexible Motion Control System</p>
+      <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
+      <p class="pub-venue"><i>IEEE Transactions on Industrial Informatics</i>, vol. 18, no. 7, pp. 4762–4772, 2021</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1109/TII.2021.3100872" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">J1</span>
+    <div>
+      <p class="pub-title">Iterative Feedback Tuning of Cascade Control of Two-Inertia System</p>
+      <p class="pub-authors"><b>H. Jung</b>, K. Jeon, J.-G. Kang, and S. Oh</p>
+      <p class="pub-venue"><i>IEEE Control Systems Letters</i>, vol. 5, no. 3, pp. 785–790, 2020</p>
+      <p class="pub-links">
+        <a href="https://doi.org/10.1109/LCSYS.2020.3005803" target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </article>
+
+  <h3>International Conferences</h3>
+
+  <article class="pub">
+    <span class="pub-num">C20</span>
+    <div>
+      <p class="pub-title">FRF-Based Nominal Model and Design Bandwidth Selection for Asymmetric Hybrid Gantry Systems under Payload Variation</p>
+      <p class="pub-authors"><b>H. Jung</b>, J. Yoon, T. Kong, and S. Oh</p>
+      <p class="pub-venue">IEEE Conference on Decision and Control (CDC), 2026
+        <span class="badge">Accepted</span></p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C19</span>
+    <div>
+      <p class="pub-title">Robust-Stability-Based Analysis of the Behavior of Disturbance-Observer-Relevant Identification</p>
+      <p class="pub-authors"><b>H. Jung</b>, P. Tacx, T. Oomen, and S. Oh</p>
+      <p class="pub-venue">IEEJ International Workshop on Sensing, Actuation, Motion Control, and Optimization (SAMCON), pp. 415–420, 2026</p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C18</span>
+    <div>
+      <p class="pub-title">Design and Robust Stability Analysis of a Disturbance Observer for Hybrid Gantry Stages with Asymmetric MIMO Dynamics</p>
+      <p class="pub-authors"><b>H. Jung</b>, J. Yoon, T. Kong, and S. Oh</p>
+      <p class="pub-venue">International Conference on Control, Automation and Systems (ICCAS), pp. 185–190, 2025</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/11301187" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C17</span>
+    <div>
+      <p class="pub-title">Novel LPV System Identification for a Gantry Stage: A Global Approach with Adjustable Basis Functions</p>
+      <p class="pub-authors">J. Yoon<sup>†</sup>, <b>H. Jung</b><sup>†</sup>, T. Kong, and S. Oh</p>
+      <p class="pub-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 18320–18326, 2025</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/11247377" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C16</span>
+    <div>
+      <p class="pub-title">Development of a Retrofit Autonomous Maneuvering System for Agricultural Vehicles</p>
+      <p class="pub-authors">J. Choi, B. Lee, and <b>H. Jung</b></p>
+      <p class="pub-venue">IEEE International Automated Vehicle Validation Conference (IAVVC), pp. 1–4, 2024</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/10786403" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C15</span>
+    <div>
+      <p class="pub-title">Multi-Dimensional Gaussian Process-Based Control for Compensation of Multi-State Dependent Disturbance</p>
+      <p class="pub-authors">H. Yeo<sup>†</sup>, <b>H. Jung</b><sup>†</sup>, and S. Oh</p>
+      <p class="pub-venue">IEEE International Conference on Advanced Intelligent Mechatronics (AIM), 2024</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/10636996" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C14</span>
+    <div>
+      <p class="pub-title">Estimation of Multi-State Dependent Disturbance by Using Multi-Dimensional Gaussian Process</p>
+      <p class="pub-authors">H. Yeo<sup>†</sup>, <b>H. Jung</b><sup>†</sup>, and S. Oh</p>
+      <p class="pub-venue">IEEE International Conference on Advanced Intelligent Mechatronics (AIM), 2024</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/10595827" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C13</span>
+    <div>
+      <p class="pub-title">Data-Driven System Decoupling Algorithm with Transfer Function Decoupling Matrix</p>
+      <p class="pub-authors">J. Yoon, T. Kong, <b>H. Jung</b>, and S. Oh</p>
+      <p class="pub-venue">IECON — Annual Conference of the IEEE Industrial Electronics Society, 2023</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/10312495" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C12</span>
+    <div>
+      <p class="pub-title">Novel Disturbance Observer Relevant Parametric System Identification Based on Robust Stability Criterion</p>
+      <p class="pub-authors"><b>H. Jung</b>, P. Tacx, T. Oomen, and S. Oh</p>
+      <p class="pub-venue">IEEE Conference on Control Technology and Applications (CCTA), pp. 1010–1015, 2023</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/10253271" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C11</span>
+    <div>
+      <p class="pub-title">Kernel-Based Learning Control Framework for High-Performance Disturbance Rejection with Covariance-Based Varying Gain</p>
+      <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
+      <p class="pub-venue">IFAC World Congress, 2023 &nbsp;<span style="font-size:.85em;">(presented, non-publication option)</span></p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C10</span>
+    <div>
+      <p class="pub-title">Data-Driven Iterative Optimization of TDOF Controller with Rational Model</p>
+      <p class="pub-authors">T. Kong, <b>H. Jung</b>, and S. Oh</p>
+      <p class="pub-venue">IEEE International Conference on Mechatronics (ICM), 2023</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/10102075" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C9</span>
+    <div>
+      <p class="pub-title">Parametric Identification Using Kernel-Based Frequency Response Model with Model Order Selection Based on Robust Stability</p>
+      <p class="pub-authors"><b>H. Jung</b>, T. Kong, J.-G. Kang, and S. Oh</p>
+      <p class="pub-venue">IECON — Annual Conference of the IEEE Industrial Electronics Society, 2022</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/9968765" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C8</span>
+    <div>
+      <p class="pub-title">Dynamics Analysis of Dual-Drive Gantry Stage in Perspective of Task Motion</p>
+      <p class="pub-authors"><b>H. Jung</b>, J.-G. Kang, and S. Oh</p>
+      <p class="pub-venue">IEEE International Symposium on Industrial Electronics (ISIE), pp. 1053–1058, 2022</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/9831472" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C7</span>
+    <div>
+      <p class="pub-title">Stochastic Learning Control Framework in the Integrated Frequency and Position Domain</p>
+      <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
+      <p class="pub-venue">International Power Electronics Conference (IPEC-Himeji, ECCE Asia), pp. 1326–1331, 2022</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/9807014" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C6</span>
+    <div>
+      <p class="pub-title">Gaussian Process and Disturbance Observer Based Control for Disturbance Rejection</p>
+      <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
+      <p class="pub-venue">IEEE International Conference on Advanced Motion Control (AMC), pp. 94–99, 2022</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/9729320" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C5</span>
+    <div>
+      <p class="pub-title">Iterative Optimization of Disturbance Observer and Feedforward Control on RFSEA System</p>
+      <p class="pub-authors">T. Kong, <b>H. Jung</b>, S. Oh, and H.-J. Chung</p>
+      <p class="pub-venue">IEEE International Symposium on Industrial Electronics (ISIE), 2021</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/9576336" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C4</span>
+    <div>
+      <p class="pub-title">Iterative Feedback Tuning of Cascade Control for Position and Velocity of Two-Mass System</p>
+      <p class="pub-authors"><b>H. Jung</b>, K. Jeon, and S. Oh</p>
+      <p class="pub-venue">IFAC-PapersOnLine, vol. 53, no. 2, pp. 8357–8362, 2020</p>
+      <p class="pub-links">
+        <a href="https://www.sciencedirect.com/science/article/pii/S2405896320322035" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C3</span>
+    <div>
+      <p class="pub-title">Disturbance Observer Based Decoupling Control to Suppress Rotational Motion of Cross-Coupled Gantry Stage</p>
+      <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
+      <p class="pub-venue">IEEE International Symposium on Industrial Electronics (ISIE), pp. 503–508, 2019</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/8781500" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C2</span>
+    <div>
+      <p class="pub-title">Unknown Frequency Vibration Suppression Control of Linear Motor Stage</p>
+      <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
+      <p class="pub-venue">IECON — Annual Conference of the IEEE Industrial Electronics Society, pp. 4624–4629, 2018</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/8591199" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <span class="pub-num">C1</span>
+    <div>
+      <p class="pub-title">Bandwidth Limitations in Force Control of a Series Elastic Actuator with Backlash and Quantization</p>
+      <p class="pub-authors"><b>H. Jung</b>, C. Lee, and S. Oh</p>
+      <p class="pub-venue">International Power Electronics Conference (IPEC-Niigata, ECCE Asia), pp. 688–692, 2018</p>
+      <p class="pub-links">
+        <a href="https://ieeexplore.ieee.org/document/8507926" target="_blank" rel="noopener">Paper</a>
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================
+     특허
+     ============================================================ -->
+<section id="patents">
+  <h2>Patents</h2>
+  <ul class="plain">
+    <li><span class="yr">2023</span>“Controlling Method of Control Systems,” Korea, Application No. 10-2023-0107736
+      <span class="sub">S. Oh, P. Tacx, T. Oomen, <b>H. Jung</b></span></li>
+    <li><span class="yr">2023</span>“Control Device for Plant and Controlling Method of the Same,” U.S.A., Reg. No. 11,835,929
+      <span class="sub">S. Oh, <b>H. Jung</b></span></li>
+    <li><span class="yr">2023</span>“Gantry Stage Apparatus,” Korea, Reg. No. 10-2547187
+      <span class="sub">S. Oh, <b>H. Jung</b></span></li>
+    <li><span class="yr">2023</span>“Elastically Actuating Apparatus,” Korea, Reg. No. 10-2512467
+      <span class="sub">S. Oh, H. Lee, <b>H. Jung</b></span></li>
+    <li><span class="yr">2023</span>“Control Device for Plant and Controlling Method of the Same,” Korea, Reg. No. 10-2487640
+      <span class="sub">S. Oh, <b>H. Jung</b></span></li>
+    <li><span class="yr">2022</span>“Method and System for Tuning Automatically Control Parameter Set of Cascade Controller Controlling Robotic Systems Using IFT,” Korea, Reg. No. 10-2479583
+      <span class="sub">J. Kang, W. Kim, L. Oh, S. Oh, <b>H. Jung</b></span></li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     수상
+     ============================================================ -->
+<section id="awards">
+  <h2>Awards &amp; Honors</h2>
+  <ul class="plain">
+    <li><span class="yr">2024</span>DGIST Best Researcher Award, DGIST</li>
+    <li><span class="yr">2023</span>Student Travel Support Award (CCTA 2023), IEEE Control Systems Society</li>
+    <li><span class="yr">2022</span>DGIST Robotics Global Fellowship (DGRF), DGIST</li>
+    <li><span class="yr">2020</span>Student Travel Support Award (CDC 2020), IEEE Control Systems Society</li>
+    <li><span class="yr">2018</span>Certificate of Excellence — Outstanding Student Award, DGIST</li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     활동 / 강의 / 협업
+     ============================================================ -->
+<section id="activities">
+  <h2>Professional Activities</h2>
+
+  <h3>Reviewer</h3>
+  <ul class="plain">
+    <li>International Journal of Control, Automation and Systems (IJCAS)</li>
+    <!-- [수정] 리뷰 경험이 있는 저널/학회를 추가하세요 -->
+  </ul>
+
+  <h3>Teaching</h3>
+  <ul class="plain">
+    <li><span class="yr">2024</span><b>Instructor</b> — MATLAB/Simulink-Based Motor Control Simulation,
+      D-Jobs Academy (Future Mobility Track), Daegu
+      <span class="sub">Motor modeling · frequency-response-based control design · industrial controller design ·
+        adaptive control, disturbance observers, and inverse-model feedforward control</span></li>
+    <li><span class="yr">2019</span><b>Teaching Assistant</b> — System Measurement and Identification (graduate), DGIST</li>
+    <li><span class="yr">2018</span><b>Teaching Assistant</b> — Motor System Control (graduate), DGIST</li>
+    <li><span class="yr">2018</span><b>Teaching Assistant</b> — Mechatronics (undergraduate), DGIST</li>
+    <li><span class="yr">2018</span><b>Teaching Assistant</b> — Engineering Vibration (undergraduate), DGIST</li>
+  </ul>
+
+  <h3>Mentoring</h3>
+  <ul class="plain">
+    <li><span class="yr">2026</span>Lead mentor, on-the-job training program for incoming researchers, ETRI</li>
+  </ul>
+
+  <h3>Collaborators</h3>
+  <ul class="plain">
+    <li>Prof. Sehoon Oh — Department of Robotics and Mechatronics Engineering, DGIST, Korea</li>
+    <li>Prof. Tom Oomen — Control Systems Technology, Eindhoven University of Technology, The Netherlands</li>
+    <li>Dr. Paul Tacx — Mechatronics and Measurement Systems, ASML, The Netherlands</li>
+    <li>Dr. Hamin Jang — Elmore Family School of Electrical and Computer Engineering, Purdue University, USA</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> Hanul Jung · Last updated September 2026<br>
+    Built with plain HTML &amp; CSS · Hosted on GitHub Pages
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
