@@ -17,27 +17,23 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   1. 디자인 토큰 — 여기만 바꾸면 사이트 전체가 따라옵니다
+   디자인 토큰 — 여기만 바꾸면 사이트 전체가 따라옵니다
    ============================================================ */
 :root{
   --accent:#1a5fb4;
   --accent-soft:#e8f0fb;
   --bg:#ffffff;
   --surface:#f7f8fa;
-  --text:#1f2328;
+  --text:#22262b;
   --text-muted:#5b6470;
   --border:#e4e7eb;
   --radius:10px;
-  --maxw:900px;
-
-  /* 브라우저가 다크모드여도 항상 흰 바탕으로 고정합니다.
-     다크모드를 지원하고 싶으면 아래 color-scheme 을 지우고
-     @media (prefers-color-scheme: dark){ :root{ ... } } 블록을 추가하세요 */
-  color-scheme:light;
+  --maxw:820px;
+  color-scheme:light;   /* 브라우저가 다크모드여도 항상 흰 바탕 */
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth; scroll-padding-top:70px;}
@@ -52,51 +48,59 @@ a:hover{text-decoration:underline;}
 
 /* ---------- 상단 내비 ---------- */
 nav{position:sticky; top:0; z-index:50;
-  background:color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter:saturate(180%) blur(12px);
+  background:rgba(255,255,255,.9); backdrop-filter:saturate(180%) blur(12px);
   border-bottom:1px solid var(--border);}
 nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px;}
 nav .brand{font-weight:700; letter-spacing:-.01em; color:var(--text);}
-nav ul{display:flex; gap:20px; list-style:none; margin:0; padding:0; overflow-x:auto;}
+nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0; overflow-x:auto;}
 nav ul a{color:var(--text-muted); font-size:14px; font-weight:500; white-space:nowrap;}
 nav ul a:hover{color:var(--accent); text-decoration:none;}
 
-/* ---------- 프로필 ---------- */
-header.profile{padding:54px 0 40px; border-bottom:1px solid var(--border);}
+/* ---------- 프로필 헤더 ---------- */
+header.profile{padding:52px 0 38px; border-bottom:1px solid var(--border);}
 .profile-grid{display:flex; gap:38px; align-items:flex-start;}
-.photo-slot{flex:0 0 172px; width:172px; height:172px; position:relative;}
-.photo{width:100%; height:100%; border-radius:50%; object-fit:cover; border:1px solid var(--border); display:block;}
-.photo-fallback{
-  width:100%; height:100%; border-radius:50%;
+.photo-slot{flex:0 0 168px; width:168px; height:168px;}
+.photo{width:100%; height:100%; border-radius:50%; object-fit:cover;
+  border:1px solid var(--border); display:block;}
+.photo-fallback{width:100%; height:100%; border-radius:50%;
   background:var(--accent-soft); color:var(--accent);
   display:flex; align-items:center; justify-content:center;
-  font-family:'Noto Serif',serif; font-size:3.4rem; letter-spacing:-.02em;
-  border:1px solid var(--border);
-}
-.profile h1{font-family:'Noto Serif',serif; font-size:2.05rem; line-height:1.2;
-  margin:0 0 5px; letter-spacing:-.02em;}
-.profile h1 .kr{font-family:inherit; font-size:1rem; color:var(--text-muted); font-weight:400; margin-left:6px;}
-.role{color:var(--text-muted); font-size:.95rem; margin:0 0 18px; line-height:1.5;}
-.bio{margin:0 0 16px;}
-.bio em{color:var(--text); font-style:normal; font-weight:600;}
-.interests{font-size:.92rem; color:var(--text-muted); margin:0 0 18px;}
-.interests strong{color:var(--text);}
-.links{display:flex; flex-wrap:wrap; gap:8px;}
+  font-size:3.2rem; font-weight:600; letter-spacing:-.02em; border:1px solid var(--border);}
+.profile h1{font-size:2rem; line-height:1.2; margin:0 0 6px; letter-spacing:-.025em; font-weight:700;}
+.profile h1 .kr{font-size:1rem; color:var(--text-muted); font-weight:400; margin-left:7px;}
+.role{color:var(--text-muted); font-size:.95rem; margin:0 0 14px; line-height:1.5;}
+
+/* 링크 줄 — 이름/직함 바로 아래 */
+.links{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px;}
 .links a{display:inline-block; padding:5px 14px; font-size:13px; font-weight:500;
   border:1px solid var(--border); border-radius:99px; color:var(--text-muted);
   background:var(--surface); transition:border-color .15s, color .15s;}
 .links a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
 
+.bio{margin:0 0 15px;}
+.bio em{color:var(--text); font-style:normal; font-weight:600;}
+.interests{font-size:.92rem; color:var(--text-muted); margin:0 0 20px;}
+.interests strong{color:var(--text);}
+
+/* 헤더 안 학력 목록 */
+.edu-head{font-size:.8rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--text-muted); margin:0 0 8px;}
+ul.edu{list-style:none; margin:0; padding:0;}
+ul.edu li{padding:5px 0 5px 20px; position:relative; font-size:.94rem;}
+ul.edu li::before{content:""; position:absolute; left:3px; top:14px;
+  width:5px; height:5px; border-radius:50%; background:var(--accent);}
+ul.edu .sub{display:block; color:var(--text-muted); font-size:.86rem;}
+
 /* ---------- 섹션 공통 ---------- */
-section{padding:42px 0 6px;}
+section{padding:40px 0 6px;}
 h2{font-size:1rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
   margin:0 0 22px; padding-bottom:9px; border-bottom:2px solid var(--accent); display:inline-block;}
-h3{font-size:.86rem; font-weight:700; color:var(--text-muted); margin:28px 0 12px;
+h3{font-size:.84rem; font-weight:700; color:var(--text-muted); margin:28px 0 12px;
   letter-spacing:.08em; text-transform:uppercase;}
 h3:first-of-type{margin-top:0;}
 .note{font-size:.85rem; color:var(--text-muted); margin:-10px 0 18px;}
 
-/* ---------- 이력 리스트 ---------- */
+/* ---------- 경력 리스트 ---------- */
 .cv-list{list-style:none; margin:0; padding:0;}
 .cv-list li{display:grid; grid-template-columns:132px 1fr; gap:20px;
   padding:13px 0; border-bottom:1px dashed var(--border);}
@@ -104,7 +108,6 @@ h3:first-of-type{margin-top:0;}
 .cv-date{color:var(--text-muted); font-size:.85rem; font-variant-numeric:tabular-nums; padding-top:3px;}
 .cv-body strong{font-weight:600;}
 .cv-body span{display:block; color:var(--text-muted); font-size:.9rem;}
-.cv-body span.thesis{font-style:italic;}
 
 /* ---------- 논문 ---------- */
 .pub{display:grid; grid-template-columns:46px 1fr; gap:6px;
@@ -122,7 +125,7 @@ h3:first-of-type{margin-top:0;}
 .pub-links a{font-size:13px; font-weight:500; margin-right:11px;}
 .pub-links a::before{content:"[";} .pub-links a::after{content:"]";}
 
-/* 썸네일을 넣고 싶은 논문은 <article class="pub pub-img"> 로 바꾸고
+/* 썸네일을 넣고 싶은 논문은 class="pub pub-img" 로 바꾸고
    <img class="pub-thumb" src="assets/xxx.png" alt=""> 를 첫 자식으로 넣으세요 */
 .pub-img{grid-template-columns:190px 1fr; gap:22px; padding:20px 0;}
 .pub-img .pub-num{display:none;}
@@ -138,19 +141,14 @@ ul.plain .yr{color:var(--text-muted); font-variant-numeric:tabular-nums;
   display:inline-block; min-width:64px;}
 ul.plain .sub{display:block; color:var(--text-muted); font-size:.89rem;}
 
-/* ---------- 과제 카드 ---------- */
-.proj{padding:14px 0; border-bottom:1px dashed var(--border);}
-.proj:last-child{border-bottom:none;}
-.proj strong{font-weight:600;}
-.proj .meta{display:block; color:var(--text-muted); font-size:.88rem;}
-
-footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
+footer{margin-top:52px; padding:26px 0 44px; border-top:1px solid var(--border);
   font-size:13px; color:var(--text-muted); text-align:center;}
 
 @media (max-width:680px){
   .profile-grid{flex-direction:column; align-items:center; text-align:center; gap:22px;}
   .photo-slot{flex-basis:140px; width:140px; height:140px;}
   .links{justify-content:center;}
+  ul.edu li{text-align:left;}
   .cv-list li{grid-template-columns:1fr; gap:2px;}
   .pub{grid-template-columns:1fr;}
   .pub-num{display:none;}
@@ -168,11 +166,10 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
   <div class="wrap">
     <a class="brand" href="#top">Hanul Jung</a>
     <ul>
-      <li><a href="#about">About</a></li>
+      <li><a href="#experiences">Research Experiences</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#patents">Patents</a></li>
       <li><a href="#awards">Awards</a></li>
-      <li><a href="#activities">Activities</a></li>
     </ul>
   </div>
 </nav>
@@ -190,11 +187,21 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
     <div>
       <h1>Hanul Jung <span class="kr">정하늘</span></h1>
       <p class="role">
-        Senior Researcher &nbsp;·&nbsp; Mobility AI Convergence Research Section<br>
-        Daegu-Gyeongbuk Research Division,
-        <a href="https://www.etri.re.kr/eng/main/main.etri" target="_blank" rel="noopener">ETRI</a>,
-        Daegu, Republic of Korea
+        Senior Researcher @
+        <a href="https://www.etri.re.kr/eng/main/main.etri" target="_blank" rel="noopener">ETRI</a><br>
+        Mobility AI Convergence Research Section, Daegu-Gyeongbuk Research Division
       </p>
+
+      <div class="links">
+        <a href="https://www.linkedin.com/in/hanul-jung/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://orcid.org/0000-0002-8262-0013" target="_blank" rel="noopener">ORCID</a>
+        <!-- [나중에] cv.pdf 를 저장소 루트에 올린 뒤 아래 주석을 푸세요
+        <a href="cv.pdf" target="_blank">CV</a>
+        -->
+        <!-- [나중에] Google Scholar 프로필을 만들면 XXXXXXXX 를 본인 ID로 바꾸고 주석을 푸세요
+        <a href="https://scholar.google.com/citations?user=XXXXXXXX" target="_blank" rel="noopener">Google Scholar</a>
+        -->
+      </div>
 
       <p class="bio">
         My research addresses <em>data-driven motion control</em> and <em>system identification</em>
@@ -219,17 +226,16 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
         MIMO precision motion control · Mobile manipulation · Industrial embedded systems
       </p>
 
-      <div class="links">
-        <a href="mailto:hanul@etri.re.kr">✉ Email</a>
-        <!-- [나중에] cv.pdf 를 저장소 루트에 올린 뒤 아래 주석을 푸세요
-        <a href="cv.pdf" target="_blank">CV</a>
-        -->
-        <a href="https://orcid.org/0000-0002-8262-0013" target="_blank" rel="noopener">ORCID</a>
-        <a href="https://github.com/jung-hanul" target="_blank" rel="noopener">GitHub</a>
-        <!-- [나중에] Google Scholar 프로필을 만드시면 아래 주석을 풀고 XXXXXXXX 를 본인 ID로 교체하세요
-        <a href="https://scholar.google.com/citations?user=XXXXXXXX" target="_blank" rel="noopener">Google Scholar</a>
-        -->
-      </div>
+      <p class="edu-head">Education</p>
+      <ul class="edu">
+        <li><b>Ph.D. in Robotics and Mechatronics Engineering</b>, DGIST, 2024
+          <span class="sub">Thesis: Data-Driven Motion Control Framework of Model-Based Approach for Multi-Axis Flexible Systems<br>
+          Advisor: Prof. Sehoon Oh · Co-advisor: Dr. Chang-Wan Ha</span></li>
+        <li><b>M.S. in Robotics Engineering</b>, DGIST, 2019
+          <span class="sub">Thesis: Unknown Frequency Vibration Suppression Control of Linear Motor Stage Using Peak Filter<br>
+          Advisor: Prof. Sehoon Oh · Co-advisor: Prof. Yongseob Lim</span></li>
+        <li><b>B.S. in Mechanical and Control Engineering</b>, Handong Global University, 2017</li>
+      </ul>
     </div>
   </div>
 </header>
@@ -237,95 +243,41 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
 <main class="wrap">
 
 <!-- ============================================================
-     학력 / 경력 / 연구경험
+     연구 경력
      ============================================================ -->
-<section id="about">
-  <h2>Education</h2>
-  <ul class="cv-list">
-    <li>
-      <span class="cv-date">2019 – 2024</span>
-      <span class="cv-body">
-        <strong>Ph.D. in Robotics and Mechatronics Engineering</strong>
-        <span>DGIST (Daegu Gyeongbuk Institute of Science and Technology), Daegu, Korea</span>
-        <span class="thesis">Thesis: Data-Driven Motion Control Framework of Model-Based Approach for Multi-Axis Flexible Systems</span>
-        <span>Advisor: Prof. Sehoon Oh &nbsp;·&nbsp; Co-advisor: Dr. Chang-Wan Ha</span>
-      </span>
-    </li>
-    <li>
-      <span class="cv-date">2017 – 2019</span>
-      <span class="cv-body">
-        <strong>M.S. in Robotics Engineering</strong>
-        <span>DGIST, Daegu, Korea</span>
-        <span class="thesis">Thesis: Unknown Frequency Vibration Suppression Control of Linear Motor Stage Using Peak Filter</span>
-        <span>Advisor: Prof. Sehoon Oh &nbsp;·&nbsp; Co-advisor: Prof. Yongseob Lim</span>
-      </span>
-    </li>
-    <li>
-      <span class="cv-date">2010 – 2017</span>
-      <span class="cv-body">
-        <strong>B.S. in Mechanical Engineering / Control Engineering</strong>
-        <span>Handong Global University, Pohang, Korea</span>
-        <span>Department of Mechanical and Control Engineering (double emphasis, incl. Counseling Psychology)</span>
-      </span>
-    </li>
-  </ul>
-
-  <h2 style="margin-top:44px;">Experience</h2>
+<section id="experiences">
+  <h2>Research Experiences</h2>
   <ul class="cv-list">
     <li>
       <span class="cv-date">2024 – Present</span>
       <span class="cv-body">
-        <strong>Senior Researcher</strong>
-        <span>Mobility AI Convergence Research Section, Daegu-Gyeongbuk Research Division, ETRI</span>
+        <strong>Senior Researcher</strong>, ETRI
+        <span>Mobility AI Convergence Research Section, Daegu-Gyeongbuk Research Division</span>
       </span>
     </li>
     <li>
       <span class="cv-date">2022 – 2023</span>
       <span class="cv-body">
-        <strong>Visiting Ph.D. Student</strong>
-        <span>Control Systems Technology Group, Eindhoven University of Technology (TU/e), The Netherlands</span>
+        <strong>Visiting Ph.D. Student</strong>, Eindhoven University of Technology (TU/e)
+        <span>Control Systems Technology Group · Host: Prof. Tom Oomen</span>
         <span>Robust-stability-based model order selection; kernel-based parametric identification; multivariable FRF analysis</span>
       </span>
     </li>
     <li>
       <span class="cv-date">2018</span>
       <span class="cv-body">
-        <strong>Research Intern</strong>
-        <span>AI Robot Research Division, Korea Institute of Machinery &amp; Materials (KIMM)</span>
-        <span>Input shaping and motion profiling; magnetic levitation tray system</span>
+        <strong>Research Intern</strong>, Korea Institute of Machinery &amp; Materials (KIMM)
+        <span>AI Robot Research Division · Input shaping and motion profiling; magnetic levitation tray system</span>
       </span>
     </li>
     <li>
       <span class="cv-date">2017</span>
       <span class="cv-body">
-        <strong>Research Intern</strong>
-        <span>Department of Robotics Engineering, DGIST</span>
-        <span>Series elastic actuator — mechanical design and control</span>
+        <strong>Research Intern</strong>, DGIST
+        <span>Department of Robotics Engineering · Series elastic actuator — mechanical design and control</span>
       </span>
     </li>
   </ul>
-</section>
-
-<!-- ============================================================
-     진행 중인 과제 — 필요 없으면 이 section 삭제
-     ============================================================ -->
-<section id="projects">
-  <h2>Current Research Projects</h2>
-  <div class="proj">
-    <strong>Modular Robotic Platform and Integrated Control for Crop Cultivation</strong>
-    <span class="meta">Regional Industry–Academia–Research Innovation Platform, 2025.07 – 2029.12 &nbsp;·&nbsp;
-      Role: control of harvesting manipulators and mobile platforms</span>
-  </div>
-  <div class="proj">
-    <strong>Intelligent Mobile Robot System for High-Voltage Circuit Breaker Insertion and Withdrawal</strong>
-    <span class="meta">Commissioned research, 2025.10 – 2026.09 &nbsp;·&nbsp;
-      Role: intelligent mobile robot system development</span>
-  </div>
-  <div class="proj">
-    <strong>Tactile-Sensor-Based Affordable Precision Gripper (Planning Study)</strong>
-    <span class="meta">ETRI Seed-Type Challenge Research Program, 2025.10 – 2026.06 &nbsp;·&nbsp;
-      Role: model- and learning-based control technology planning</span>
-  </div>
 </section>
 
 <!-- ============================================================
@@ -357,7 +309,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors"><b>H. Jung</b>, J. Yoon, T. Kong, and S. Oh</p>
       <p class="pub-venue"><i>Mechatronics</i>, vol. 118, art. 103526, 2026</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1016/J.MECHATRONICS.2026.103526" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1016/J.MECHATRONICS.2026.103526" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -369,7 +321,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors"><b>H. Jung</b>, H. Yeo, H. Jang, and S. Oh</p>
       <p class="pub-venue"><i>Control Engineering Practice</i>, vol. 173, 2026</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1016/J.CONENGPRAC.2026.106981" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1016/J.CONENGPRAC.2026.106981" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -381,7 +333,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors">J. Choi and <b>H. Jung</b> (corresponding author)</p>
       <p class="pub-venue"><i>ASME Journal of Mechanisms and Robotics</i>, vol. 18, no. 3, art. 034501, 2026</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1115/1.4070891" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1115/1.4070891" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -393,7 +345,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors"><b>H. Jung</b>, W. Kim, and S. Oh</p>
       <p class="pub-venue"><i>IEEE/ASME Transactions on Mechatronics</i>, vol. 31, no. 2, 2026</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1109/TMECH.2025.3614046" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1109/TMECH.2025.3614046" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -405,7 +357,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors"><b>H. Jung</b>, S. Kwak, H. Choi, and S. Oh</p>
       <p class="pub-venue"><i>IEEE Transactions on Control Systems Technology</i>, vol. 31, no. 3, pp. 1451–1459, 2022</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1109/TCST.2022.3220898" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1109/TCST.2022.3220898" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -417,7 +369,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors"><b>H. Jung</b> and S. Oh</p>
       <p class="pub-venue"><i>IEEE Transactions on Industrial Informatics</i>, vol. 18, no. 7, pp. 4762–4772, 2021</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1109/TII.2021.3100872" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1109/TII.2021.3100872" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -429,7 +381,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
       <p class="pub-authors"><b>H. Jung</b>, K. Jeon, J.-G. Kang, and S. Oh</p>
       <p class="pub-venue"><i>IEEE Control Systems Letters</i>, vol. 5, no. 3, pp. 785–790, 2020</p>
       <p class="pub-links">
-        <a href="https://doi.org/10.1109/LCSYS.2020.3005803" target="_blank" rel="noopener">DOI</a>
+        <a href="https://doi.org/10.1109/LCSYS.2020.3005803" target="_blank" rel="noopener">Paper</a>
       </p>
     </div>
   </article>
@@ -694,7 +646,7 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
      수상
      ============================================================ -->
 <section id="awards">
-  <h2>Awards &amp; Honors</h2>
+  <h2>Awards</h2>
   <ul class="plain">
     <li><span class="yr">2024</span>DGIST Best Researcher Award, DGIST</li>
     <li><span class="yr">2023</span>Student Travel Support Award (CCTA 2023), IEEE Control Systems Society</li>
@@ -704,50 +656,11 @@ footer{margin-top:54px; padding:26px 0 44px; border-top:1px solid var(--border);
   </ul>
 </section>
 
-<!-- ============================================================
-     활동 / 강의 / 협업
-     ============================================================ -->
-<section id="activities">
-  <h2>Professional Activities</h2>
-
-  <h3>Reviewer</h3>
-  <ul class="plain">
-    <li>International Journal of Control, Automation and Systems (IJCAS)</li>
-    <!-- [수정] 리뷰 경험이 있는 저널/학회를 추가하세요 -->
-  </ul>
-
-  <h3>Teaching</h3>
-  <ul class="plain">
-    <li><span class="yr">2024</span><b>Instructor</b> — MATLAB/Simulink-Based Motor Control Simulation,
-      D-Jobs Academy (Future Mobility Track), Daegu
-      <span class="sub">Motor modeling · frequency-response-based control design · industrial controller design ·
-        adaptive control, disturbance observers, and inverse-model feedforward control</span></li>
-    <li><span class="yr">2019</span><b>Teaching Assistant</b> — System Measurement and Identification (graduate), DGIST</li>
-    <li><span class="yr">2018</span><b>Teaching Assistant</b> — Motor System Control (graduate), DGIST</li>
-    <li><span class="yr">2018</span><b>Teaching Assistant</b> — Mechatronics (undergraduate), DGIST</li>
-    <li><span class="yr">2018</span><b>Teaching Assistant</b> — Engineering Vibration (undergraduate), DGIST</li>
-  </ul>
-
-  <h3>Mentoring</h3>
-  <ul class="plain">
-    <li><span class="yr">2026</span>Lead mentor, on-the-job training program for incoming researchers, ETRI</li>
-  </ul>
-
-  <h3>Collaborators</h3>
-  <ul class="plain">
-    <li>Prof. Sehoon Oh — Department of Robotics and Mechatronics Engineering, DGIST, Korea</li>
-    <li>Prof. Tom Oomen — Control Systems Technology, Eindhoven University of Technology, The Netherlands</li>
-    <li>Dr. Paul Tacx — Mechatronics and Measurement Systems, ASML, The Netherlands</li>
-    <li>Dr. Hamin Jang — Elmore Family School of Electrical and Computer Engineering, Purdue University, USA</li>
-  </ul>
-</section>
-
 </main>
 
 <footer>
   <div class="wrap">
-    © <span id="year"></span> Hanul Jung · Last updated September 2026<br>
-    Built with plain HTML &amp; CSS · Hosted on GitHub Pages
+    © <span id="year"></span> Hanul Jung · Last updated September 2026
   </div>
 </footer>
 
